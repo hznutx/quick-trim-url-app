@@ -4,7 +4,7 @@ import {Input} from '@heroui/input';
 import {Snippet} from '@heroui/snippet';
 import {useState} from 'react';
 
-import {RocketIcon, UnLinkIcon} from './icon';
+import {RefreshIcon, RocketIcon, UnLinkIcon} from './icon';
 
 const UrlInput = () => {
   const [url, setUrl] = useState('');
@@ -61,6 +61,7 @@ const UrlInput = () => {
         />
         <Button
           color='primary'
+          disabled={!shortenUrl}
           onPress={() => extractUrl(shortenUrl)}>
           <div className='text-white'>
             <RocketIcon />
@@ -69,6 +70,7 @@ const UrlInput = () => {
       </div>
       <div className='flex gap-3 items-center justify-between w-full'>
         <Input
+          fullWidth
           isClearable
           required
           placeholder='original URL'
@@ -79,27 +81,35 @@ const UrlInput = () => {
         />
         <Button
           color='success'
-          onPress={addCustomRegex}>
+          disabled={!url}
+          onPress={trimUrlSubmit}>
           <div className='text-white'>
             <UnLinkIcon />
           </div>
         </Button>
       </div>
+      <Button
+        color='secondary'
+        onPress={addCustomRegex}>
+        optional convert{' '}
+      </Button>
       {showOption && (
         <Input
           fullWidth
+          endContent={
+            <button
+              className='relative pb-1 hover:text-teal-400 flex-shrink-0'
+              onClick={trimUrlSubmit}>
+              <RefreshIcon />
+            </button>
+          }
           label='trim out after: (default = ?)'
           type='text'
           value={regex}
           onChange={updateRegex}
         />
       )}
-      <Button
-        color='secondary'
-        disabled={!url}
-        onPress={trimUrlSubmit}>
-        Trim URL
-      </Button>
+
       <Snippet
         fullWidth
         hideSymbol
