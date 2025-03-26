@@ -71,7 +71,7 @@ const UrlInput = () => {
         <Input
           isClearable
           required
-          placeholder='Enter URL'
+          placeholder='original URL'
           type='text'
           value={url}
           onChange={handleUrlChange}
@@ -88,7 +88,7 @@ const UrlInput = () => {
       {showOption && (
         <Input
           fullWidth
-          label='regex (default = ?)'
+          label='trim out after: (default = ?)'
           type='text'
           value={regex}
           onChange={updateRegex}
