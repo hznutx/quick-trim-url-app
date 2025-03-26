@@ -73,9 +73,8 @@ const UrlInput = () => {
           </Button>
         ) : (
           <Input
-            className='w-fit'
-            label='trim out after'
-            placeholder='regex'
+            className='w-5'
+            placeholder='regex: ?'
             type='text'
             value={regex}
             onChange={updateRegex}
