@@ -3,7 +3,6 @@ import {Button} from '@heroui/button';
 import {Input} from '@heroui/input';
 import {Snippet} from '@heroui/snippet';
 import {useState} from 'react';
-import {Code} from '@heroui/code';
 
 import {RocketIcon, UnLinkIcon} from './icon';
 
@@ -24,6 +23,9 @@ const UrlInput = () => {
 
   const addCustomRegex = () => {
     setShowOption((prev) => !prev);
+    if (!showOption) {
+      setRegex('?');
+    }
   };
 
   const trimUrlSubmit = () => {
@@ -33,13 +35,7 @@ const UrlInput = () => {
   };
 
   const extractUrl = (shortenUrl: string) => {
-    let newWindow = window.open(shortenUrl);
-    setTimeout(() => {
-      if (newWindow) {
-        setUrl(newWindow?.location?.href);
-      }
-      newWindow?.close();
-    }, 5000);
+    window.open(shortenUrl, '_blank');
   };
 
   const updateRegex = (e: any) => {
@@ -107,8 +103,9 @@ const UrlInput = () => {
       <Snippet
         fullWidth
         hideSymbol
-        classNames={{pre: 'whitespace-normal'}}
-        id='trim-result'>
+        classNames={{pre: 'whitespace-normal w-[85%] line-clamp-1'}}
+        id='trim-result'
+        variant='bordered'>
         {trimmedUrl}
       </Snippet>
     </div>

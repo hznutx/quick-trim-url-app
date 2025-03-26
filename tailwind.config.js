@@ -24,7 +24,6 @@ const config = {
         },
         secondary: '#280F34',
         success: '#80BDAB',
-        default: '#DDDDDD',
         primary: '#FF9595',
         danger: '#E41655',
         warning: '#B30753',
