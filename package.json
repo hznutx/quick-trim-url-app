@@ -21,6 +21,7 @@
     "@heroui/system": "2.4.12",
     "@heroui/theme": "2.4.12",
     "@react-aria/visually-hidden": "3.8.20",
+    "axios": "^1.8.4",
     "clsx": "2.1.1",
     "framer-motion": "11.13.1",
     "intl-messageformat": "^10.7.16",
