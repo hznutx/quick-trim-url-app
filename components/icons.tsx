@@ -1,24 +1,25 @@
-import * as React from "react";
+import * as React from 'react';
 
-import { IconSvgProps } from "@/types";
+import { IconSvgProps } from '@/types';
 
 export const Logo: React.FC<IconSvgProps> = ({
-  size = 36,
+  size = 24,
   height,
+  color,
   ...props
 }) => (
   <svg
     fill="none"
     height={size || height}
-    viewBox="0 0 32 32"
     width={size || height}
     {...props}
+    stroke={color || 'currentColor'}
+    strokeWidth="2"
   >
     <path
-      clipRule="evenodd"
-      d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-      fill="currentColor"
-      fillRule="evenodd"
+      d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

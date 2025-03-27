@@ -20,6 +20,7 @@
     "@heroui/switch": "2.2.14",
     "@heroui/system": "2.4.12",
     "@heroui/theme": "2.4.12",
+    "@heroui/toast": "^2.0.6",
     "@react-aria/visually-hidden": "3.8.20",
     "axios": "^1.8.4",
     "clsx": "2.1.1",
