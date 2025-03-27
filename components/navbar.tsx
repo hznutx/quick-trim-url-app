@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {Navbar as NextUINavbar, NavbarContent, NavbarMenu, NavbarMenuToggle, NavbarBrand, NavbarItem, NavbarMenuItem} from '@heroui/navbar';
 import {Link} from '@heroui/link';
 import {link as linkStyles} from '@heroui/theme';
@@ -7,6 +8,11 @@ import clsx from 'clsx';
 import {siteConfig} from '@/config/site';
 import {ThemeSwitch} from '@/components/theme-switch';
 import {TwitterIcon, GithubIcon, DiscordIcon, Logo} from '@/components/icons';
+
+export interface ILinkNavBar {
+  href: string;
+  label: string;
+}
 
 export const Navbar = () => {
   return (
@@ -26,18 +32,20 @@ export const Navbar = () => {
             <p className='font-bold text-inherit'>Trimo</p>
           </NextLink>
         </NavbarBrand>
-        <ul className='hidden lg:flex gap-4 justify-start ml-2'>
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <NextLink
-                className={clsx(linkStyles({color: 'foreground'}), 'data-[active=true]:text-primary data-[active=true]:font-medium')}
-                color='foreground'
-                href={item.href}>
-                {item.label}
-              </NextLink>
-            </NavbarItem>
-          ))}
-        </ul>
+        {siteConfig.navItems && (
+          <ul className='hidden lg:flex gap-4 justify-start ml-2'>
+            {siteConfig.navItems.map((item: ILinkNavBar) => (
+              <NavbarItem key={item.href}>
+                <NextLink
+                  className={clsx(linkStyles({color: 'foreground'}), 'data-[active=true]:text-primary data-[active=true]:font-medium')}
+                  color='foreground'
+                  href={item.href}>
+                  {item.label}
+                </NextLink>
+              </NavbarItem>
+            ))}
+          </ul>
+        )}
       </NavbarContent>
 
       <NavbarContent
@@ -76,23 +84,25 @@ export const Navbar = () => {
           <GithubIcon className='text-default-500' />
         </Link>
         <ThemeSwitch />
-        <NavbarMenuToggle />
+        {siteConfig.navMenuItems.length > 0 && <NavbarMenuToggle />}
       </NavbarContent>
 
-      <NavbarMenu>
-        <div className='mx-4 mt-2 flex flex-col gap-2'>
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={index === 2 ? 'primary' : index === siteConfig.navMenuItems.length - 1 ? 'danger' : 'foreground'}
-                href='#'
-                size='lg'>
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
-        </div>
-      </NavbarMenu>
+      {siteConfig.navMenuItems && (
+        <NavbarMenu>
+          <div className='mx-4 mt-2 flex flex-col gap-2'>
+            {siteConfig.navMenuItems.map((item: ILinkNavBar, index) => (
+              <NavbarMenuItem key={`${index}`}>
+                <Link
+                  color={index === 2 ? 'primary' : index === siteConfig.navMenuItems.length - 1 ? 'danger' : 'foreground'}
+                  href='#'
+                  size='lg'>
+                  {item.label}
+                </Link>
+              </NavbarMenuItem>
+            ))}
+          </div>
+        </NavbarMenu>
+      )}
     </NextUINavbar>
   );
 };

@@ -3,18 +3,8 @@ export type SiteConfig = typeof siteConfig;
 export const siteConfig = {
   name: 'Trimo',
   description: 'Make beautiful websites regardless of your design experience.',
-  navItems: [
-    {
-      label: 'Home',
-      href: '/',
-    },
-  ],
-  navMenuItems: [
-    {
-      label: 'Home',
-      href: '/',
-    },
-  ],
+  navItems: [],
+  navMenuItems: [],
   links: {
     github: 'https://github.com/hznutx',
     twitter: 'https://twitter.com/hznutx',

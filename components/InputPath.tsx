@@ -2,7 +2,7 @@
 import {Button} from '@heroui/button';
 import {Input} from '@heroui/input';
 import {Snippet} from '@heroui/snippet';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {RefreshIcon, RocketIcon, UnLinkIcon} from './icon';
 
@@ -39,7 +39,7 @@ const UrlInput = () => {
   };
 
   const updateRegex = (e: any) => {
-    setRegex(e.target.value);
+    setRegex(String(e.target.value).toLowerCase());
   };
 
   const clearValue = (setFunc: (input: string) => void) => {
@@ -80,7 +80,7 @@ const UrlInput = () => {
           onClear={() => clearValue(setUrl)}
         />
         <Button
-          color='success'
+          color='secondary'
           disabled={!url}
           onPress={trimUrlSubmit}>
           <div className='text-white'>
@@ -89,23 +89,25 @@ const UrlInput = () => {
         </Button>
       </div>
       <Button
-        color='secondary'
+        fullWidth
+        color={showOption ? 'warning' : 'default'}
         onPress={addCustomRegex}>
-        optional convert{' '}
+        {!showOption ? 'optional convert' : 'reset'}
       </Button>
       {showOption && (
         <Input
           fullWidth
+          autoCapitalize='none'
           endContent={
             <button
-              className='relative pb-1 hover:text-teal-400 flex-shrink-0'
+              className='relative pb-1 cursor-pointer hover:text-teal-400 flex-shrink-0'
               onClick={trimUrlSubmit}>
               <RefreshIcon />
             </button>
           }
           label='trim out after: (default = ?)'
           type='text'
-          value={regex}
+          value={regex.toLowerCase()}
           onChange={updateRegex}
         />
       )}
@@ -113,7 +115,8 @@ const UrlInput = () => {
       <Snippet
         fullWidth
         hideSymbol
-        classNames={{pre: 'whitespace-normal w-[85%] line-clamp-1'}}
+        classNames={{pre: 'whitespace-normal text-wrap w-[88%] line-clamp-1'}}
+        color='success'
         id='trim-result'
         variant='bordered'>
         {trimmedUrl}
