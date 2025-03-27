@@ -1,8 +1,13 @@
-import {heroui} from '@heroui/theme';
+import { heroui } from '@heroui/theme';
 
 /** @type {import('tailwindcss').Config} */
 const config = {
-  content: ['./layouts/**/*.{js,ts,jsx,tsx,mdx}', './pages/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}', './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './layouts/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     screens: {
       xs: '375px',
@@ -22,10 +27,10 @@ const config = {
           black: '#000',
           white: '#fff',
         },
-        primary: '#6096B4',
-        secondary: '#93BFCF',
-        success: '#BDCDD6',
-        warning: '#EEE9DA',
+        primary: '#5F5D9C',
+        secondary: '#6196A6',
+        success: '#A4CE95',
+        warning: '#FFBE98',
         danger: '#F05454',
       },
     },
